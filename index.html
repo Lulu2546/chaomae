@@ -470,6 +470,22 @@
       </div>
     </section>
 
+     <!-- Omikuji Section -->
+    <section id="omikuji-section" class="p-3">
+      <div id="omikuji-container" class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-4"></div>
+    </section>
+
+    <!-- Modal -->
+    <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
+      <div class="bg-white p-6 rounded-lg max-w-sm w-full text-center relative">
+        <button id="modal-close" class="absolute top-2 right-2 text-gray-500 hover:text-gray-800 text-2xl">&times;</button>
+        <h3 id="modal-title" class="text-xl font-bold mb-2"></h3>
+        <img id="modal-image" src="" alt="เซียมซี" class="mx-auto rounded-lg max-h-96">
+        <p id="modal-content" class="text-gray-700 mt-2"></p>
+      </div>
+    </div>
+
+
     <!-- Contact Section -->
     <section class="mb-16">
       <div class="flex items-center mb-6">
@@ -583,6 +599,77 @@
   </button>
 
   <script>
+ // ===== เมนูมือถือ =====
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // ===== Omikuji Data =====
+    const fortunes = [
+    { title: "เซียมซีใบที่ 1", img: "https://i.postimg.cc/6Q2cPW8C/1.jpg" },
+    { title: "เซียมซีใบที่ 2", img: "https://i.postimg.cc/50mC7TSw-/2.jpg" },
+    { title: "เซียมซีใบที่ 3", img: "https://i.postimg.cc/VvV528rb/3.jpg" },
+    { title: "เซียมซีใบที่ 4", img: "https://i.postimg.cc/1RjtmyX8/4.jpg" },
+    { title: "เซียมซีใบที่ 5", img: "https://i.postimg.cc/k4ZmmXs9/5.jpg" },
+    { title: "เซียมซีใบที่ 6", img: "https://i.postimg.cc/JzmtgPtx/6.jpg" },
+    { title: "เซียมซีใบที่ 7", img: "https://i.postimg.cc/y8PWzcZH/7.jpg" },
+    { title: "เซียมซีใบที่ 8", img: "https://i.postimg.cc/3wS05mDq/8-A4-FC40-D-70-C7-43-AA-94-C3-F926-E55-E16-D8.jpg" },
+    { title: "เซียมซีใบที่ 9", img: "https://i.postimg.cc/xjyw55Dn/9.jpg" },
+    { title: "เซียมซีใบที่ 10", img: "https://i.postimg.cc/9FLv5fQk/10.jpg" },
+    { title: "เซียมซีใบที่ 11", img: "https://i.postimg.cc/HLyKy49G/11.jpg" },
+    { title: "เซียมซีใบที่ 12", img: "https://i.postimg.cc/BvHY6ZJ4/12.jpg" },
+    { title: "เซียมซีใบที่ 13", img: "https://i.postimg.cc/76NK3BCR/13.jpg" },
+    { title: "เซียมซีใบที่ 14", img: "https://i.postimg.cc/RhVXXcKZ/14.jpg" },
+    { title: "เซียมซีใบที่ 15", img: "https://i.postimg.cc/HWBSjh1c/15.jpg" },
+    { title: "เซียมซีใบที่ 16", img: "https://i.postimg.cc/SxzVTQ2C/16.jpg" },
+    { title: "เซียมซีใบที่ 17", img: "https://i.postimg.cc/hjKrt9C1/17.jpg" },
+    { title: "เซียมซีใบที่ 18", img: "https://i.postimg.cc/TwQcLpFM/18.jpg" },
+    { title: "เซียมซีใบที่ 19", img: "https://i.postimg.cc/BZYgJP22/19.jpg" },
+    { title: "เซียมซีใบที่ 20", img: "https://i.postimg.cc/pXmBrVB4/20.jpg" },
+    { title: "เซียมซีใบที่ 21", img: "https://i.postimg.cc/t4Ptdrwz/21.jpg" },
+    { title: "เซียมซีใบที่ 22", img: "https://i.postimg.cc/Twkr2B5T/22.jpg" },
+    { title: "เซียมซีใบที่ 23", img: "https://i.postimg.cc/mkt7PV7C/23.jpg" },
+    { title: "เซียมซีใบที่ 24", img: "https://i.postimg.cc/9XnG65jp/24.jpg" },
+    { title: "เซียมซีใบที่ 25", img: "https://i.postimg.cc/rFRScnVL/25.jpg" },
+    { title: "เซียมซีใบที่ 26", img: "https://i.postimg.cc/Sx0cK6RY/26.jpg" },
+    { title: "เซียมซีใบที่ 27", img: "https://i.postimg.cc/Xv4FfnwV/27.jpg" },
+    { title: "เซียมซีใบที่ 28", img: "https://i.postimg.cc/MTGQLtPN/28.jpg" }
+  ];
+
+
+
+    // ===== สร้าง Omikuji Cards =====
+    const container = document.getElementById('omikuji-container');
+    for(let i=0; i<28; i++){
+      const card = document.createElement('div');
+      card.className = "bg-white p-4 rounded-lg shadow hover:shadow-lg cursor-pointer text-center font-bold text-red-800";
+      card.textContent = `เซียมซีใบที่ซี ${i+1}`;
+      card.dataset.index = i;
+      card.addEventListener('click', () => {
+        const fortune = fortunes[i % fortunes.length];
+        document.getElementById('modal-title').textContent = `เซียมซีใบที่ ${i+1}`;
+        document.getElementById('modal-content').textContent = fortune.text;
+        document.getElementById('modal-image').src = fortune.img;
+        document.getElementById('modal').classList.remove('hidden');
+      });
+      container.appendChild(card);
+    }
+
+    // ===== ปิด Modal =====
+    document.getElementById('modal-close').addEventListener('click', () => {
+      document.getElementById('modal').classList.add('hidden');
+    });
+    document.getElementById('modal').addEventListener('click', (e) => {
+      if(e.target.id === 'modal') document.getElementById('modal').classList.add('hidden');
+    });
+    
     // Mobile menu toggle
     const menuToggle = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -635,6 +722,7 @@
 </html>
 
              
+
 
 
 
