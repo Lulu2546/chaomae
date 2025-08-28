@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ศาลเจ้าแม่ทับทิม ท่าน้ำนนท์</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Sarabun', sans-serif;
+      scroll-behavior: smooth;
+    }
+    
+    .shrine-bg {
+      background-color: #fff8f2;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c62828' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    
+    .header-pattern {
+      background-image: url("data:image/svg+xml,%3Csvg width='100' height='20' viewBox='0 0 100 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21.184 20c.357-.13.72-.264 1.088-.402l1.768-.661C33.64 15.347 39.647 14 50 14c10.271 0 15.362 1.222 24.629 4.928.955.383 1.869.74 2.75 1.072h6.225c-2.51-.73-5.139-1.691-8.233-2.928C65.888 13.278 60.562 12 50 12c-10.626 0-16.855 1.397-26.66 5.063l-1.767.662c-2.475.923-4.66 1.674-6.724 2.275h6.335zm0-20C13.258 2.892 8.077 4 0 4V2c5.744 0 9.951-.574 14.85-2h6.334zM77.38 0C85.239 2.966 90.502 4 100 4V2c-6.842 0-11.386-.542-16.396-2h-6.225zM0 14c8.44 0 13.718-1.21 22.272-4.402l1.768-.661C33.64 5.347 39.647 4 50 4c10.271 0 15.362 1.222 24.629 4.928C84.112 12.722 89.438 14 100 14v-2c-10.271 0-15.362-1.222-24.629-4.928C65.888 3.278 60.562 2 50 2 39.374 2 33.145 3.397 23.34 7.063l-1.767.662C13.223 10.84 8.163 12 0 12v2z' fill='%23ffffff' fill-opacity='0.2' fill-rule='evenodd'/%3E%3C/svg%3E");
+    }
+    
+    .nav-link {
+      position: relative;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -2px;
+      left: 0;
+      background-color: #ffd700;
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    .gallery-img {
+      transition: transform 0.3s ease;
+    }
+    
+    .gallery-img:hover {
+      transform: scale(1.03);
+    }
+    
+    .shrine-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .shrine-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px -5px rgba(198, 40, 40, 0.1), 0 8px 10px -6px rgba(198, 40, 40, 0.1);
+    }
+    
+    .scroll-top {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s, visibility 0.3s;
+    }
+    
+    .scroll-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    .float-animation {
+      animation: float 3s ease-in-out infinite;
+    }
+        /* Animation สำหรับ modal */
+    .modal-enter {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    .modal-enter-active {
+      transition: all 0.3s ease-out;
+      opacity: 1;
+      transform: scale(1);
+    }
+    .modal-leave {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .modal-leave-active {
+      transition: all 0.2s ease-in;
+      opacity: 0;
+      transform: scale(0.9);
+    }
+  </style>
+</head>
+<body class="shrine-bg">
+
+    <nav class="bg-red-800 text-white sticky top-0 z-50 shadow-md">
+    <div class="container mx-auto px-4 py-3 flex flex-wrap items-center justify-between">
+      <div class="flex items-center">
+        <svg class="w-8 h-8 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 3L4 9V21H20V9L12 3Z" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M9 21V12H15V21" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12 3V7" stroke="#FFD700" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span class="font-bold text-lg">ศาลเจ้าแม่ทับทิม</span>
+      </div>
+      <div class="hidden md:flex space-x-6">
+        <a href="#about" class="nav-link hover:text-yellow-300">ประวัติ</a>
+        <a href="#deities" class="nav-link hover:text-yellow-300">เทพเจ้า</a>
+        <a href="#prayers" class="nav-link hover:text-yellow-300">การขอพร</a>
+        <a href="#gallery" class="nav-link hover:text-yellow-300">รูปภาพ</a>
+        <a href="#location" class="nav-link hover:text-yellow-300">การเดินทาง</a>
+        <a href="#fortunestick" class="nav-link hover:text-yellow-300">ใบเซียมซีออนไลน์</a>
+      </div>
+      <button class="md:hidden focus:outline-none" id="menu-toggle">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+    <div class="md:hidden hidden px-4 pb-3 pt-1" id="mobile-menu">
+      <a href="#about" class="block py-2 hover:text-yellow-300">ประวัติ</a>
+      <a href="#deities" class="block py-2 hover:text-yellow-300">เทพเจ้า</a>
+      <a href="#prayers" class="block py-2 hover:text-yellow-300">การขอพร</a>
+      <a href="#gallery" class="block py-2 hover:text-yellow-300">รูปภาพ</a>
+      <a href="#location" class="block py-2 hover:text-yellow-300">การเดินทาง</a>
+      <a href="#fortunestick" class="block py-2 hover:text-yellow-300">ใบเซียมซีออนไลน์</a>
+    </div>
+  </nav>
+
+    <header class="bg-gradient-to-r from-red-800 to-red-700 text-white header-pattern">
+    <div class="container mx-auto px-4 py-16 md:py-24 text-center">
+      <h1 class="text-3xl md:text-4xl font-bold mb-4">ศาลเจ้าแม่ทับทิม ท่าน้ำนนทบุรี</h1>
+      <p class="text-xl md:text-2xl mb-8">สถานที่ศักดิ์สิทธิ์คู่ชุมชน ริมแม่น้ำเจ้าพระยา</p>
+      <div class="flex justify-center">
+        <a href="#about" class="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 inline-flex items-center">
+          <span>เรียนรู้เพิ่มเติม</span>
+          <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+    <main class="container mx-auto px-4 py-8">
+    
+        <div class="relative rounded-xl overflow-hidden shadow-xl mb-12">
+      <img 
+        src="https://www.bloggang.com/data/s/shiryu/picture/1714572793.jpg" 
+        alt="ศาลเจ้าแม่ทับทิม ท่าน้ำนนท์"
+        class="w-full h-[300px] md:h-[500px] object-cover"
+      >
+      <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
+        <div class="p-6 text-white">
+          <h2 class="text-2xl md:text-3xl font-bold mb-2">ศาลเจ้าแม่ทับทิม</h2>
+          <p class="text-lg">สถานที่ศักดิ์สิทธิ์ริมแม่น้ำเจ้าพระยา จังหวัดนนทบุรี</p>
+        </div>
+      </div>
+    </div>
+
+        <section id="about" class="mb-16 scroll-mt-20">
+      <div class="flex items-center mb-6">
+        <div class="w-10 h-10 rounded-full bg-red-800 flex items-center justify-center mr-3">
+          <span class="text-white text-xl">📍</span>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold text-red-800">ประวัติความเป็นมา</h2>
+      </div>
+      
+      <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
+        <div class="md:flex">
+          <div class="md:w-2/3 md:pr-6">
+            <p class="text-lg mb-4">
+              ศาลเจ้าแม่ทับทิม (Chao Mae Tubtim Shrine) ตั้งอยู่บริเวณท่าน้ำนนทบุรี
+              สร้างขึ้นโดยชาวจีนโพ้นทะเลในยุคต้นรัตนโกสินทร์ เพื่อเป็นที่ยึดเหนี่ยวจิตใจและสักการะเทพธิดาแม่ทับทิม (天后/Tian Hou) 
+              ซึ่งเป็นเทพเจ้าแห่งท้องทะเล และการเดินทางปลอดภัย
+            </p>
+            <p class="text-lg mb-4">
+              ศาลเจ้าแห่งนี้มีความสำคัญต่อชุมชนชาวจีนในพื้นที่นนทบุรีมาอย่างยาวนาน โดยเฉพาะในอดีตที่การค้าขายทางเรือเป็นเส้นทางสำคัญ 
+              ชาวเรือและพ่อค้าจะมาสักการะขอพรให้เดินทางปลอดภัย
+            </p>
+            <p class="text-lg">
+              ปัจจุบันศาลเจ้าแม่ทับทิมยังคงเป็นศูนย์รวมจิตใจของชาวไทยเชื้อสายจีนและประชาชนทั่วไป 
+              โดยเฉพาะในช่วงเทศกาลสำคัญ เช่น ตรุษจีน และวันเกิดเจ้าแม่ทับทิม
+            </p>
+          </div>
+          <div class="md:w-1/3 mt-6 md:mt-0">
+            <div class="bg-red-50 rounded-lg p-4 border-l-4 border-red-800">
+              <h3 class="font-bold text-red-800 mb-2">เวลาเปิดทำการ</h3>
+              <p class="mb-2"><span class="font-semibold">ทุกวัน:</span> 08:00 - 17:00 น.</p>
+              <p class="mb-2"><span class="font-semibold">วันพิเศษ/เทศกาล:</span> 08:00 - 17:00 น.</p>
+              <div class="mt-4 pt-4 border-t border-red-200">
+                <h3 class="font-bold text-red-800 mb-2">ค่าเข้าชม</h3>
+                <p>ไม่มีค่าเข้าชม (บริจาคตามศรัทธา)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+        <section id="deities" class="mb-16 scroll-mt-20">
+      <div class="flex items-center mb-6">
+        <div class="w-10 h-10 rounded-full bg-red-800 flex items-center justify-center mr-3">
+          <span class="text-white text-xl">🙏</span>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold text-red-800">เทพเจ้าที่ประดิษฐาน</h2>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="shrine-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="h-64 md:h-64 w-full relative">
+            <img 
+              src="https://scontent.fkkc2-1.fna.fbcdn.net/v/t39.30808-6/481115542_953871556857662_2572743626566004016_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=DdVUGzHwcFcQ7kNvwHiDrcg&_nc_oc=AdkTf1GopZ5Ie5dX4HvdK0oyvM4_HH1ffdlL7YgsYzWsEsDYDejoA8vecB8ykZhw6KBiiDhWZ_JEuAWZlNk9OmwA&_nc_zt=23&_nc_ht=scontent.fkkc2-1.fna&_nc_gid=6cmofTo5mkaom2fjOkRb4Q&oh=00_AfURe7YVnHfJtPG4zXeNdCJFqdkaKJSv4nFaoDpkpKZaxw&oe=68B4FC97" 
+              alt="เจ้าแม่ทับทิม ศาลเจ้า" 
+              class="w-full h-full object-cover"
+            >
+          </div>
+        
+                    <div class="p-6">
+            <h3 class="text-xl font-bold text-red-800 mb-2">
+              เจ้าแม่ทับทิม (天后 / Tian Hou)
+            </h3>
+            <p class="mb-4">
+              เทพแห่งท้องทะเลคุ้มครองการเดินทาง ช่วยปกป้องผู้คนจากภัยอันตรายต่างๆ 
+              โดยเฉพาะการเดินทางทางน้ำ
+            </p>
+        
+                        <div class="flex items-center text-sm text-gray-600">
+              <span class="mr-2">🏮</span>
+              <span>องค์ประธานของศาลเจ้า</span>
+            </div>
+          </div>
+        </div>
+  
+        
+                <div class="shrine-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="h-64 md:h-64 w-full relative">
+            <img 
+              src="https://scontent.fkkc2-1.fna.fbcdn.net/v/t39.30808-6/481443207_953871550190996_904978723967697415_n.jpg?
+              _nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_ohc=QY_DFf9OHAoQ7kNvwFgibs6&_nc_oc=Adm479Qh3F8RLvndUsDiT0L4d2lNazqFR49ayIWgFGJ9YKUJIiwLR4AxcEB2LAYA4TzG2RUhXccjlV_oSxVl-U_U&_nc_zt=23&_nc_ht=scontent.fkkc2-1.fna&_nc_gid=I9bae81-udDUkf8ywaWyxg&oh=00_AfXUF243W9k-lcyBPU7YW2rA_G1uCDqT3LgHdnlWB-Sn5g&oe=68B5117D" 
+              alt="ปึงเถ่ากงม่า" 
+              class="w-full h-full object-cover">
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-red-800 mb-2">ปึงเถ่ากงม่า</h3>
+            <p class="mb-4">เป็นเทพเจ้าผู้พิทักษ์คุ้มครองท้องถิ่น และเป็นสัญลักษณ์ของบรรพบุรุษ</p>
+            <div class="flex items-center text-sm text-gray-600">
+              <span class="mr-2">🌸</span>
+              <span>ประดิษฐานด้านซ้ายของศาล</span>
+            </div>
+          </div>
+        </div>
+        
+                <div class="shrine-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="h-64 md:h-64 w-full relative">
+            <img 
+              src="https://i.postimg.cc/FH8sy4wY/image.jpg" 
+                alt="แปะกงแปะม่า" 
+              class="w-full h-full object-cover">
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-red-800 mb-2">แปะกงแปะม่า</h3>
+            <p class="mb-4">เป็นเทพแห่งแผ่นดินและบ้านเมือง เป็นเทพที่ดูแลความสงบสุขและความรษณ์ของบรรพบุรุษ</p>
+            <div class="flex items-center text-sm text-gray-600">
+              <span class="mr-2">⚔️</span>
+              <span>ประดิษฐานด้านขวาของศาล</span>
+            </div>
+          </div>
+        </div>
+        
+    
+        
+                <div class="shrine-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="h-64 md:h-64 w-full relative">
+            <img src="https://i.postimg.cc/RCdSPfj5/image.png" 
+                alt="ไฉ่ซิงเอี๊ย" 
+              class="w-full h-full object-cover">
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-red-800 mb-2">ไฉ่ซิงเอี๊ย</h3>
+            <p class="mb-4">เทพแห่งโชคลาภเงินทอง ผู้คนมักมาขอพรเรื่องการเงิน ธุรกิจ และความมั่งคั่ง</p>
+            <div class="flex items-center text-sm text-gray-600">
+              <span class="mr-2">💰</span>
+              <span>ประดิษฐานด้านในของศาล</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+        <section id="prayers" class="mb-16 scroll-mt-20">
+      <div class="flex items-center mb-6">
+        <div class="w-10 h-10 rounded-full bg-red-800 flex items-center justify-center mr-3">
+          <span class="text-white text-xl">🎎</span>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold text-red-800">สิ่งที่นิยมขอพร</h2>
+      </div>
+      
+      <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
+        <div class="md:flex">
+          <div class="md:w-3/5 md:pr-8">
+            <p class="text-lg mb-6">
+              ผู้คนมักมาขอพรเรื่องความปลอดภัยในการเดินทาง สุขภาพ การค้าขาย โชคลาภ และขอลูก 
+              โดยจะมีธูปแดง ไหว้ตามจุดต่าง ๆ ภายในศาล ซึ่งมีบรรยากาศจีนโบราณและเครื่องบูชาให้ครบถ้วน
+            </p>
+            
+            <h3 class="text-xl font-bold text-red-800 mb-3">วิธีการไหว้ขอพร</h3>
+            <ol class="list-decimal pl-5 mb-6 space-y-2">
+              <li>จุดธูป 3 ดอก สำหรับไหว้เทพเจ้าฟ้าดิน</li>
+              <li>จุดธูป 9 ดอก สำหรับไหว้เจ้าแม่ทับทิม</li>
+              <li>ไหว้เทพเจ้าองค์อื่นๆ ตามความศรัทธา</li>
+              <li>ตั้งจิตอธิษฐานขอพรในสิ่งที่ปรารถนา</li>
+              <li>เสี่ยงเซียมซีเพื่อขอคำทำนาย (ตามความศรัทธา)</li>
+            </ol>
+            
+            <h3 class="text-xl font-bold text-red-800 mb-3">เทศกาลสำคัญ</h3>
+            <ul class="list-disc pl-5 space-y-2">
+              <li>วันเกิดเจ้าแม่ทับทิม (วันที่ 23 เดือน 3 ตามปฏิทินจันทรคติจีน)</li>
+              <li>เทศกาลตรุษจีน</li>
+              <li>เทศกาลกินเจ</li>
+              <li>เทศกาลไหว้พระจันทร์</li>
+            </ul>
+          </div>
+          
+          <div class="md:w-2/5 mt-6 md:mt-0">
+            <div class="bg-red-50 rounded-lg p-6 relative overflow-hidden">
+              <div class="absolute top-0 right-0 w-20 h-20">
+                <svg viewBox="0 0 100 100" class="text-red-800/10">
+                  <path d="M0,0 L100,0 L100,100 Z" fill="currentColor"/>
+                </svg>
+              </div>
+              
+              <h3 class="text-xl font-bold text-red-800 mb-4">เครื่องสักการะ</h3>
+              
+              <div class="space-y-4">
+                <div class="flex items-start">
+                  <span class="text-2xl mr-3">🕯️</span>
+                  <div>
+                    <h4 class="font-bold">ธูปแดง</h4>
+                    <p class="text-sm">ใช้สำหรับไหว้เทพเจ้า</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-start">
+                  <span class="text-2xl mr-3">🍊</span>
+                  <div>
+                    <h4 class="font-bold">ผลไม้มงคล</h4>
+                    <p class="text-sm">ส้ม, แอปเปิ้ล, สับปะรด</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-start">
+                  <span class="text-2xl mr-3">🧧</span>
+                  <div>
+                    <h4 class="font-bold">แผ่นทอง/กระดาษเงินทอง</h4>
+                    <p class="text-sm">สำหรับไหว้เทพเจ้า</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-start">
+                  <span class="text-2xl mr-3">🍰</span>
+                  <div>
+                    <h4 class="font-bold">ขนมหวาน</h4>
+                    <p class="text-sm">ขนมเปี๊ยะ, ขนมเข่ง</p>
+                  </div>
+                </div>
+              </div>   <div class="mt-6 pt-4 border-t border-red-200">
+                <p class="text-sm text-gray-700">
+                  <span class="font-bold">หมายเหตุ:</span> สามารถหาซื้อเครื่องสักการะได้บริเวณหน้าศาลเจ้า
+                </p>
+              </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="gallery" class="mb-16 scroll-mt-20">
+      <div class="flex items-center mb-6">
+        <div class="w-10 h-10 rounded-full bg-red-800 flex items-center justify-center mr-3">
+          <span class="text-white text-xl">📸</span>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold text-red-800">ภาพบรรยากาศ</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="gallery-img bg-white rounded-lg overflow-hidden shadow-md">
+           <div class="h-64 w-full relative">
+            <img 
+              src="https://scontent.fkkc2-1.fna.fbcdn.net/v/t39.30808-6/481673042_953871583524326_1848631828844101827_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_ohc=nwtj4hVOL_QQ7kNvwEDHhZG&_nc_oc=AdnsAkDzc2tpzR8ApIqtl0wpID-it882WAmkOQd8p5SMMJQJoKUN2T1tRvbbCrHoKeO3F-pfxtoM6dtNI571S4Kf&_nc_zt=23&_nc_ht=scontent.fkkc2-1.fna&_nc_gid=PGkeRP9-SllifMxPeY0HcQ&oh=00_AfXvsAXPWetXKh_7XvqF-go2jaW-ZY1MABsAtXu2Pga83w&oe=68B4FC6F" 
+              alt="ด้านหน้าศาลเจ้า" 
+              class="w-full h-full object-cover"
+            >
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold">ด้านหน้าศาลเจ้า</h3>
+            <p class="text-sm text-gray-600">ประตูทางเข้าศาลเจ้าแม่ทับทิม</p>
+          </div>
+        </div>
+        
+                <div class="gallery-img bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="h-64 w-full relative">
+            <img src="https://i.postimg.cc/mkmTtfQ2/image.jpg" 
+              alt="แท่นบูชาหลัก เจ้าแม่ทับทิม" 
+              class="w-full h-full object-cover">
+          </div>
+        
+                    <div class="p-4">
+            <h3 class="font-bold">แท่นบูชาหลัก</h3>
+            <p class="text-sm text-gray-600">แท่นบูชาเจ้าแม่ทับทิมองค์ประธาน</p>
+          </div>
+        </div>
+
+        
+                <div class="gallery-img bg-white rounded-lg overflow-hidden shadow-md">
+                      <div class="h-64 w-full relative">
+            <img 
+              src="https://scontent.fkkc2-1.fna.fbcdn.net/v/t39.30808-6/481359679_953871443524340_8566377697294923925_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_ohc=-jfOfegx0_sQ7kNvwEGDH5B&_nc_oc=Adl9g1qkmmgJtvfoo7JQPR_LALyPQwXTDUsijVlrO_0cf531zTU9NmtvKKvqh5IRF2yOGaYS5sc7hGI4uVh-E7T6&_nc_zt=23&_nc_ht=scontent.fkkc2-1.fna&_nc_gid=LVPWk6VEAvN20-lCDXxMTA&oh=00_AfXWJ4GeP_AnMFtmjB0j-CtWyJn_kQq9WVcYPPfKBoYwug&oe=68B4FE34" 
+              alt="ภายในศาลเจ้า" 
+              class="w-full h-full object-cover"
+            >
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold">ภายในศาลเจ้า</h3>
+            <p class="text-sm text-gray-600">บรรยากาศภายในศาลเจ้า</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+        <section id="location" class="mb-16 scroll-mt-20">
+      <div class="flex items-center mb-6">
+        <div class="w-10 h-10 rounded-full bg-red-800 flex items-center justify-center mr-3">
+          <span class="text-white text-xl">🌍</span>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold text-red-800">การเดินทาง</h2>
+      </div>
+      
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+        <div class="md:flex">
+          <div class="md:w-1/2 p-6 md:p-8">
+            <h3 class="text-xl font-bold text-red-800 mb-4">ที่ตั้งและการเดินทาง</h3>
+            <p class="mb-4">
+              ตั้งอยู่ใกล้ท่าน้ำนนทบุรี เดินทางง่ายด้วย MRT (สถานีสะพานพระนั่งเกล้า หรือ สถานีบางกระสอ) 
+              แล้วต่อรถสองแถว / แท็กซี่ หรือโดยเรือด่วนเจ้าพระยา
+            </p>
+            
+            <h4 class="font-bold mb-2">การเดินทางโดย MRT</h4>
+            <ul class="list-disc pl-5 mb-4">
+              <li>ลงที่สถานีสะพานพระนั่งเกล้า (ใกล้ที่สุด)</li>
+              <li>เดินประมาณ 10-15 นาที หรือต่อรถสองแถวไปท่าน้ำนนทบุรี</li>
+            </ul>
+            
+            <h4 class="font-bold mb-2">การเดินทางโดยเรือ</h4>
+            <ul class="list-disc pl-5 mb-4">
+              <li>ขึ้นเรือด่วนเจ้าพระยา</li>
+              <li>ลงที่ท่าน้ำนนทบุรี</li>
+              <li>ศาลเจ้าอยู่ติดกับท่าเรือ</li>
+            </ul>
+            
+            <h4 class="font-bold mb-2">การเดินทางโดยรถยนต์</h4>
+            <ul class="list-disc pl-5">
+              <li>ใช้ถนนพิบูลสงคราม มุ่งหน้าไปท่าน้ำนนทบุรี</li>
+              <li>มีที่จอดรถบริเวณใกล้เคียง (จำกัด)</li>
+            </ul>
+          </div>
+          
+          <div class="md:w-1/2">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3876.0835!2d100.4908!3d13.8617!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29c7e4c99b3b3%3A0x3a8b9b9f47df0d79!2z4Liq4LiW4Lij4Li14Lih4Lij4Lix4LiZ4Li44LmI4LiX4Li44LiV4Li04LiU4Li04LiK4Liy4LiU!5e0!3m2!1sth!2sth!4v1700000000000" 
+              width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+        <section id="fortunestick" class="mb-16 scroll-mt-20">
+      <div class="flex items-center mb-6">
+        <div class="w-10 h-10 rounded-full bg-red-800 flex items-center justify-center mr-3">
+          <span class="text-white text-xl">📜</span>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold text-red-800">ใบเซียมซีออนไลน์</h2>
+      </div>
+    </section>
+
+        <section id="omikuji-section" class="p-3">
+      <div id="omikuji-container" class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-4"></div>
+    </section>
+
+        <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
+      <div class="bg-white p-6 rounded-lg max-w-sm w-full text-center relative">
+        <button id="modal-close" class="absolute top-2 right-2 text-gray-500 hover:text-gray-800 text-2xl">×</button>
+        <h3 id="modal-title" class="text-xl font-bold mb-2"></h3>
+        <img id="modal-image" src="" alt="เซียมซี" class="mx-auto rounded-lg max-h-96">
+        <p id="modal-content" class="text-gray-700 mt-2"></p>
+      </div>
+    </div>
+
+
+
+
+        <section class="mb-16">
+      <div class="flex items-center mb-6">
+        <div class="w-10 h-10 rounded-full bg-red-800 flex items-center justify-center mr-3">
+          <span class="text-white text-xl">📞</span>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold text-red-800">ติดต่อสอบถาม</h2>
+      </div>
+      
+      <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
+        <div class="md:flex items-center">
+          <div class="md:w-2/3 md:pr-8">
+            <h3 class="text-xl font-bold text-red-800 mb-4">สอบถามข้อมูลเพิ่มเติม</h3>
+            <div class="space-y-3">
+            <div class="flex items-center">
+                <svg class="w-6 h-6 text-red-800 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M13 3h4a1 1 0 0 1 1 1v3h-3c-.55 0-1 .45-1 1v2h4l-1 4h-3v7h-4v-7H8v-4h2V8a5 5 0 0 1 5-5z" />
+                </svg>
+                <span>ศาลเจ้าแม่ทับทิม-ท่าน้ำนนทบุรี</span>
+              </div>
+
+              <div class="flex items-center">
+                <svg class="w-6 h-6 text-red-800 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <span>เปิดทุกวัน 08:00 - 17:00 น.</span>
+              </div>
+              
+              <div class="flex items-center">
+                <svg class="w-6 h-6 text-red-800 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                </svg>
+                <span>ท่าน้ำนนทบุรี ถนนพิบูลสงคราม จังหวัดนนทบุรี</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="md:w-1/3 mt-6 md:mt-0">
+            <div class="bg-red-50 rounded-lg p-6 text-center">
+              <div class="w-20 h-20 mx-auto mb-4 bg-red-100 rounded-full flex items-center justify-center">
+                <svg class="w-10 h-10 text-red-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <h3 class="text-lg font-bold text-red-800 mb-2">มีข้อสงสัย?</h3>
+              <p class="mb-4">สามารถติดต่อสอบถามเพิ่มเติมได้ในวันและเวลาทำการ</p>
+              <a href="#" class="inline-block bg-red-800 hover:bg-red-900 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+                ติดต่อเรา
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+    <footer class="bg-red-900 text-white">
+    <div class="container mx-auto px-4 py-8">
+      <div class="md:flex md:justify-between">
+        <div class="mb-6 md:mb-0">
+          <h3 class="text-xl font-bold mb-2 flex items-center">
+            <svg class="w-6 h-6 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 3L4 9V21H20V9L12 3Z" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M9 21V12H15V21" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            ศาลเจ้าแม่ทับทิม ท่าน้ำนนทบุรี
+          </h3>
+          <p class="text-red-200">สถานที่ศักดิ์สิทธิ์คู่ชุมชน ริมแม่น้ำเจ้าพระยา</p>
+        </div>
+        
+        <div class="grid grid-cols-2 gap-8 md:gap-16">
+          <div>
+            <h3 class="text-lg font-semibold mb-3">เมนูหลัก</h3>
+            <ul class="space-y-2">
+              <li><a href="#about" class="text-red-200 hover:text-white">ประวัติ</a></li>
+              <li><a href="#deities" class="text-red-200 hover:text-white">เทพเจ้า</a></li>
+              <li><a href="#prayers" class="text-red-200 hover:text-white">การขอพร</a></li>
+              <li><a href="#location" class="text-red-200 hover:text-white">การเดินทาง</a></li>
+              <li><a href="#fortunestick" class="text-red-200 hover:text-white">ใบเซียมซีออนไลน์</a></li>  
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="text-lg font-semibold mb-3">ติดต่อ</h3>
+            <ul class="space-y-2">
+           
+              <li class="flex items-center">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 3h4a1 1 0 0 1 1 1v3h-3c-.55 0-1 .45-1 1v2h4l-1 4h-3v7h-4v-7H8v-4h2V8a5 5 0 0 1 5-5z" />
+                </path>
+                </svg>
+                <span>ศาลเจ้าแม่ทับทิม-ท่าน้ำนนทบุรี</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="mt-8 pt-6 border-t border-red-800 text-center text-sm text-red-300">
+        <p>© 2023 ศาลเจ้าแม่ทับทิม ท่าน้ำนนทบุรี. สงวนลิขสิทธิ์.</p>
+      </div>
+    </div>
+  </footer>
+
+<script>
+   // ===== เมนูมือถือ =====
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // ===== Omikuji Data =====
+    const fortunes = [
+    { title: "เซียมซีใบที่ 1", img: "https://i.postimg.cc/6Q2cPW8C/1.jpg" },
+    { title: "เซียมซีใบที่ 2", img: "https://i.postimg.cc/50mC7TSw-/2.jpg" },
+    { title: "เซียมซีใบที่ 3", img: "https://i.postimg.cc/VvV528rb/3.jpg" },
+    { title: "เซียมซีใบที่ 4", img: "https://i.postimg.cc/1RjtmyX8/4.jpg" },
+    { title: "เซียมซีใบที่ 5", img: "https://i.postimg.cc/k4ZmmXs9/5.jpg" },
+    { title: "เซียมซีใบที่ 6", img: "https://i.postimg.cc/JzmtgPtx/6.jpg" },
+    { title: "เซียมซีใบที่ 7", img: "https://i.postimg.cc/y8PWzcZH/7.jpg" },
+    { title: "เซียมซีใบที่ 8", img: "https://i.postimg.cc/3wS05mDq/8-A4-FC40-D-70-C7-43-AA-94-C3-F926-E55-E16-D8.jpg" },
+    { title: "เซียมซีใบที่ 9", img: "https://i.postimg.cc/xjyw55Dn/9.jpg" },
+    { title: "เซียมซีใบที่ 10", img: "https://i.postimg.cc/9FLv5fQk/10.jpg" },
+    { title: "เซียมซีใบที่ 11", img: "https://i.postimg.cc/HLyKy49G/11.jpg" },
+    { title: "เซียมซีใบที่ 12", img: "https://i.postimg.cc/BvHY6ZJ4/12.jpg" },
+    { title: "เซียมซีใบที่ 13", img: "https://i.postimg.cc/76NK3BCR/13.jpg" },
+    { title: "เซียมซีใบที่ 14", img: "https://i.postimg.cc/RhVXXcKZ/14.jpg" },
+    { title: "เซียมซีใบที่ 15", img: "https://i.postimg.cc/HWBSjh1c/15.jpg" },
+    { title: "เซียมซีใบที่ 16", img: "https://i.postimg.cc/SxzVTQ2C/16.jpg" },
+    { title: "เซียมซีใบที่ 17", img: "https://i.postimg.cc/hjKrt9C1/17.jpg" },
+    { title: "เซียมซีใบที่ 18", img: "https://i.postimg.cc/TwQcLpFM/18.jpg" },
+    { title: "เซียมซีใบที่ 19", img: "https://i.postimg.cc/BZYgJP22/19.jpg" },
+    { title: "เซียมซีใบที่ 20", img: "https://i.postimg.cc/pXmBrVB4/20.jpg" },
+    { title: "เซียมซีใบที่ 21", img: "https://i.postimg.cc/t4Ptdrwz/21.jpg" },
+    { title: "เซียมซีใบที่ 22", img: "https://i.postimg.cc/Twkr2B5T/22.jpg" },
+    { title: "เซียมซีใบที่ 23", img: "https://i.postimg.cc/mkt7PV7C/23.jpg" },
+    { title: "เซียมซีใบที่ 24", img: "https://i.postimg.cc/9XnG65jp/24.jpg" },
+    { title: "เซียมซีใบที่ 25", img: "https://i.postimg.cc/rFRScnVL/25.jpg" },
+    { title: "เซียมซีใบที่ 26", img: "https://i.postimg.cc/Sx0cK6RY/26.jpg" },
+    { title: "เซียมซีใบที่ 27", img: "https://i.postimg.cc/Xv4FfnwV/27.jpg" },
+    { title: "เซียมซีใบที่ 28", img: "https://i.postimg.cc/MTGQLtPN/28.jpg" }
+  ];
+
+
+
+    // ===== สร้าง Omikuji Cards =====
+    const container = document.getElementById('omikuji-container');
+    for(let i=0; i<28; i++){
+      const card = document.createElement('div');
+      card.className = "bg-white p-4 rounded-lg shadow hover:shadow-lg cursor-pointer text-center font-bold text-red-800";
+      card.textContent = `เซียมซีใบที่ซี ${i+1}`;
+      card.dataset.index = i;
+      card.addEventListener('click', () => {
+        const fortune = fortunes[i % fortunes.length];
+        document.getElementById('modal-title').textContent = `เซียมซีใบที่ ${i+1}`;
+        document.getElementById('modal-content').textContent = fortune.text;
+        document.getElementById('modal-image').src = fortune.img;
+        document.getElementById('modal').classList.remove('hidden');
+      });
+      container.appendChild(card);
+    }
+
+    // ===== ปิด Modal =====
+    document.getElementById('modal-close').addEventListener('click', () => {
+      document.getElementById('modal').classList.add('hidden');
+    });
+    document.getElementById('modal').addEventListener('click', (e) => {
+      if(e.target.id === 'modal') document.getElementById('modal').classList.add('hidden');
+    });
+  </script>
+<script>
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: 'smooth'
+          });
+          
+          // Close mobile menu if open
+          if (!mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
