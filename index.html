@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ศาลเจ้าแม่ทับทิม ท่าน้ำนนท์</title>
   <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body {
+         body {
       font-family: 'Sarabun', sans-serif;
       scroll-behavior: smooth;
     }
@@ -76,6 +77,25 @@
     
     .float-animation {
       animation: float 3s ease-in-out infinite;
+    }
+        /* Animation สำหรับ modal */
+    .modal-enter {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    .modal-enter-active {
+      transition: all 0.3s ease-out;
+      opacity: 1;
+      transform: scale(1);
+    }
+    .modal-leave {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .modal-leave-active {
+      transition: all 0.2s ease-in;
+      opacity: 0;
+      transform: scale(0.9);
     }
   </style>
 </head>
@@ -722,6 +742,7 @@
 </html>
 
              
+
 
 
 
